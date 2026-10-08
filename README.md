@@ -19,16 +19,7 @@
 | 无线 | RTL8822CS，SDIO ID `024C:C822`，5GHz / 80MHz |
 | 系统 | `CoreELEC 22.0-Piers_nightly_20261007`，`Amlogic-no.aarch64` |
 | 内核 | `5.15.196` |
-| CoreELEC commit | `b59c88dfb718465e04d7999fc31a31e57030552a` |
-| linux-amlogic commit | `968a93c28223f72ff94e706eabb0277292bac878` |
-| common_drivers commit | `d9ec1b3b91822e03fdbeb09305aa0f63fbbb4c17` |
 | HDMI 链路 | 经 DENON 功放连接电视，EDID 宣告最大 TMDS 600MHz |
-
-**本仓库不是所有 S905X2 盒子的通用固件。** 顶部 framebuffer 地址与 2GB 内存及该盒子的 U-Boot 行为有关；无线模块必须匹配内核 ABI，不能仅凭版本号相同认定兼容。其他内存容量、其他无线芯片或后续内核应重新核对并构建。
-
-原始 `kernel.img` SHA256：`e340675c1c70b3e215c6858bce42c1262a3a11d493d7cfbe4824f7460bd1b7a0`。
-
-原始 `SYSTEM` SHA256：`e02890e8c360d4cfee77962b17f520716229892b0496211b8ed0742b21865b1b`。
 
 ## 修复效果
 
@@ -41,7 +32,7 @@
 | SDR104 + 适配厂商驱动 | **578.76Mbps** | **71.75MB/s** | **74.37MB/s** | **73.31MB/s** |
 | 完整修复后重启复测 | **580.27Mbps** | — | — | — |
 
-`Mbps` 为兆比特/秒；`MB/s` 使用十进制兆字节/秒。iperf3 3.18 测 TCP 单连接反向下载，排除预热阶段；SMB/WebDAV 读取文件并丢弃数据。iperf 与 NAS 是不同局域网主机，速度不应视为完全等价。
+`Mbps` 为兆比特/秒；`MB/s` 使用十进制兆字节/秒。iperf3 3.18 测 TCP 单连接反向下载，排除预热阶段；SMB/WebDAV 读取文件并丢弃数据。
 
 测试影片《双子杀手》约 **81.39GB / 117 分钟**，全文件平均约 **92.71Mbps**。原来的无线下载连平均消耗都难以满足，等待很久也难以积累缓存。修复后网络读取具备明显余量。
 
