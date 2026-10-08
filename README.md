@@ -8,7 +8,7 @@
 
 实际只需要替换启动 DTB，并在可写的 `/storage` 添加无线驱动及加载配置。**没有替换 `kernel.img` 或 `SYSTEM`，没有刷写内部 eMMC，也没有拿 NG/kernel 4.9 的 DTB 给 NO/kernel 5.15 使用。**
 
-修复在 2026-10-07 实机完成，随后验证重启和手动播放。用户确认快进快退流畅、缓冲很快、seek 后 cache 能迅速填满。
+修复在实机完成，随后验证重启和手动播放。确认快进快退流畅、缓冲很快、seek 后 cache 能迅速填满。
 
 ## 适用硬件与软件
 
@@ -272,32 +272,6 @@ reboot
 
 如果设备无法启动，可在电脑上挂载 U 盘/SD 卡启动分区，恢复备份的 `dtb.img`；无线服务配置可通过 TTL 或可读写 storage 分区撤销。
 
-## 可选：关闭 CEC
-
-本次盒子经过功放，用户要求避免电视/功放因 CEC 联动关机，因此关闭了 CEC。这是独立设置，不是 HDMI 花屏的根因修复。
-
-1. 将 `/flash/config.ini` 中的 `cec_func_config` 设置为 `'00'`（编辑前 remount 为 rw，编辑后同步并恢复 ro）。不要用其他设备的完整 config.ini 覆盖自己的设置。
-2. Kodi「系统 → 输入 → 外设 → CEC Adapter」中禁用 CEC，关闭唤醒/关机联动。
-3. 安装启动前关闭内核 CEC 的 drop-in：
-
-```sh
-cd /storage/s905x2-coreelec-no-fixes
-mkdir -p /storage/.config/system.d/kodi.service.d
-cp optional/cec/90-hdmi-diagnosis.conf /storage/.config/system.d/kodi.service.d/
-systemctl daemon-reload
-```
-
-下次启动后 `cat /sys/class/aocec/fun_cfg` 应为 `0x0`。如需恢复 CEC，删除该 drop-in，并恢复自己的 config.ini 与 Kodi CEC 设置。
-
-## 验证边界与已知情况
-
-- 已测 2160p23.976/24/25/30/50/59.94/60，以及多种色彩格式；用户确认正常。
-- 4K60 RGB/4:4:4 10bit 需要 742.5MHz，超出 HDMI 2.0 最大 600MHz，驱动正确拒绝；不能把这种拒绝当成此次修复失败。
-- 手动高码率 HEVC 4K60 + TrueHD Atmos 播放、seek、重启后带宽已验证。未做整部影片无人值守长时间认证。
-- 被动监测中起播/seek 后的两次 decoder error/drop 计数在连续观察段没有增加；不宣称全程零错误。
-- 一次自动 JSONRPC 打开影片曾导致 Kodi 黑屏和控制无响应，重启 Kodi 后手动播放正常；该自动起播问题未单独修复。本仓库不包含自动播放脚本。
-- 原日志中的 Bluetooth reset 和 `not support hdmitx_vout_set_vframe_rate_hint` 提示在修复前也存在；蓝牙服务与适配器保持启用。没有为消除提示随意关闭其他功能。
-- 原系统百兆有线口不是本次测试路径；不宣称百兆网口能满足所有高码率峰值。
 
 ## 校验与源码授权
 
