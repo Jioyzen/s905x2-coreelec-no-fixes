@@ -1,6 +1,6 @@
 # S905X2 CoreELEC NO 修复文件
 
-针对一台 **S905X2 / G12A、u212 接近板型、2GB DDR3、RTL8822CS SDIO Wi-Fi** 盒子，在原始 CoreELEC NO 系统上修复：
+针对某 **S905X2 / G12A、u212 接近板型、2GB DDR3、RTL8822CS SDIO Wi-Fi** 盒子，在原始 CoreELEC NO 系统上修复，不保证兼容其他机器，如果你有类似故障可以尝试使用本修复或者镜像，主要修复如下：
 
 1. 4K 高刷新率 HDMI 花屏，恢复稳定的 2160p50/59.94/60 输出。
 2. U-Boot 图标正常，但进入 CoreELEC 图标前短暂花屏的显示交接问题。
