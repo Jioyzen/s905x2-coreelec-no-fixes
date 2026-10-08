@@ -72,7 +72,7 @@ CoreELEC-Amlogic-no.aarch64-22.0-Piers_nightly_20261007-S905X2-2G-RTL8822CS-fixe
 2. 核对 `.img.sha256`。Linux 在镜像所在目录执行 `sha256sum -c 文件名.img.sha256`；Windows 可用 `Get-FileHash -Algorithm SHA256 文件名.img`。
 3. 用 balenaEtcher 或 Rufus 的 DD 镜像模式，把整个 `.img` 写入目标介质。刷写会清空所选介质；不用再手动选择和复制 DTB。
 4. 盒子关机，断开其他 CoreELEC 启动介质，再插入新介质，沿用此前能成功进入 U 盘启动的方式。多个同名 `COREELEC` / `STORAGE` 分区同时连接可能造成挂载歧义。
-5. 首次启动会执行原版扩容并自动重启，过程中不要断电。之后进入 Kodi，正常配置 Wi-Fi 和 SMB 来源。
+5. 首次启动会执行原版扩容并自动重启，过程中不要断电。之后进入 Kodi，配置 **5GHz Wi-Fi** 和 SMB 来源。网络名不一定包含“5G”，可用 `iw dev wlan0 link` 确认频率；本次高速验证对应 5GHz / 80MHz。
 6. 选择 4K50/60，并播放此前容易缓冲的原片，检查画面、缓存和 seek。
 
 SSH/TTL 中可检查：
@@ -119,4 +119,8 @@ sh /storage/.config/restore-native-wifi.sh
 
 若要只保留 HDMI 修复并撤销 SDR104，先回退无线驱动，再将 `/flash/s905x2-fixes/hdmi-only.dtb` 复制成 `/flash/dtb.img`，同步并重启。完整回退可重新刷写原版镜像，或继续使用此前保留的可用介质。详细手动回退见 [../README.md](../README.md)。
 
-目前完成的是：镜像文件系统、产物校验、DTB 参数、扩容跳过、自动安装、服务链接、重复启动幂等及损坏包拒绝的离线验证；安装脚本还使用原镜像 ARM64 BusyBox 经 QEMU 执行验证。**新封装的整镜像尚未在另一张介质上进行首次实机启动。** DTB 和无线模块本身已经在该盒子的原版内核上实机验证。离线测试不能替代首次启动的扩容、实际驱动绑定及电视画面验证。
+镜像文件系统、产物校验、DTB 参数、扩容跳过、自动安装、服务链接、重复启动幂等及损坏包拒绝均已完成离线验证；安装脚本还使用原镜像 ARM64 BusyBox 经 QEMU 执行验证。
+
+2026-10-08 用户刷写新 U 盘并初始化后，实机确认 `/storage` 扩容为约 28.2GiB，安装标记存在，服务 enabled/active，厂商模块正确绑定，SDIO 为 200MHz / SDR104，控制器错误计数均为 0。初次播放缓冲不足时实际连接的是 2.4GHz / 20MHz，TCP 下载约 96.33Mbps；切换到 5GHz / 80MHz 后达到 **588.52Mbps**。这次不是安装或驱动加载失败，不需要重新刷写镜像。
+
+用户随后手动播放确认恢复正常。完整记录见 [../validation/IMAGE-VALIDATION.md](../validation/IMAGE-VALIDATION.md)。CEC 维持原版配置，本轮没有操作 CEC、自动控制播放或重启盒子；不把吞吐测速当作整部影片播放认证。

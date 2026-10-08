@@ -63,6 +63,8 @@ HDMI 模式验证见 [validation/HDMI-MODES.md](validation/HDMI-MODES.md)。无�
 
 如需刷写后自动安装修复，可把原版镜像制作成板型专用镜像，**不需要重新编译内核或重打包 `SYSTEM`**。镜像构建脚本、首次启动扩容处理和使用步骤见 [image/README.md](image/README.md)。
 
+初始化时请连接 **5GHz Wi-Fi**。新镜像实机已确认自动扩容、厂商驱动加载成功，5GHz TCP 下载约 588.5Mbps；同机误连 2.4GHz 时只有约 96.3Mbps，仍会出现高码率播放缓存不足。不要仅凭缓冲现象判断驱动未生效，可检查实际频率和服务状态，见 [validation/IMAGE-VALIDATION.md](validation/IMAGE-VALIDATION.md)。
+
 ### 1. 下载并传到盒子
 
 在电脑上克隆仓库，或从 GitHub 下载 ZIP 并解压。将整个目录放到盒子 `/storage/s905x2-coreelec-no-fixes`。例如电脑终端：
