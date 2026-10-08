@@ -6,9 +6,13 @@
 
 ## 已生成的文件
 
+下载：[修复版镜像 Release](https://github.com/Jioyzen/s905x2-coreelec-no-fixes/releases/tag/20261007-s905x2-fixes-v1)。发布文件为 `.img.gz`，同时提供压缩包与解压后镜像的 SHA256 校验文件。
+
 ```text
 CoreELEC-Amlogic-no.aarch64-22.0-Piers_nightly_20261007-S905X2-2G-RTL8822CS-fixed.img
 CoreELEC-Amlogic-no.aarch64-22.0-Piers_nightly_20261007-S905X2-2G-RTL8822CS-fixed.img.sha256
+CoreELEC-Amlogic-no.aarch64-22.0-Piers_nightly_20261007-S905X2-2G-RTL8822CS-fixed.img.gz
+CoreELEC-Amlogic-no.aarch64-22.0-Piers_nightly_20261007-S905X2-2G-RTL8822CS-fixed.img.gz.sha256
 ```
 
 2026-10-08 生成的镜像 SHA256：
@@ -19,7 +23,13 @@ CoreELEC-Amlogic-no.aarch64-22.0-Piers_nightly_20261007-S905X2-2G-RTL8822CS-fixe
 
 这是这一份产物的校验值。再次构建时，FAT 时间戳和目录分配可能不同，因此整镜像 SHA256 不保证相同；DTB、无线模块、内核和 `SYSTEM` 都有独立校验。
 
-镜像位于生成它的本地工作目录，未将整镜像提交到 Git。仓库提供全部修复文件、构建脚本和说明。
+发布压缩包 SHA256：
+
+```text
+30a1f7057b939703f31097fa3e063ea3197cb00a675755d2d9eb70b1ac5e7335
+```
+
+镜像通过 GitHub Release 发布；仓库 Git 文件树提供全部修复文件、构建脚本和说明。
 
 ## 镜像里改了什么
 
@@ -69,8 +79,8 @@ CoreELEC-Amlogic-no.aarch64-22.0-Piers_nightly_20261007-S905X2-2G-RTL8822CS-fixe
 ## 刷写与第一次启动
 
 1. **使用另一张 U 盘/SD 卡**，保留目前已验证可用的介质。
-2. 核对 `.img.sha256`。Linux 在镜像所在目录执行 `sha256sum -c 文件名.img.sha256`；Windows 可用 `Get-FileHash -Algorithm SHA256 文件名.img`。
-3. 用 balenaEtcher 或 Rufus 的 DD 镜像模式，把整个 `.img` 写入目标介质。刷写会清空所选介质；不用再手动选择和复制 DTB。
+2. 下载 `.img.gz`、`.img.gz.sha256` 和 `.img.sha256`。Linux 在下载目录执行 `sha256sum -c 文件名.img.gz.sha256`；Windows 可用 `Get-FileHash -Algorithm SHA256 文件名.img.gz`。需要核对解压后镜像时，执行 `sha256sum -c 文件名.img.sha256`。
+3. balenaEtcher 可以直接选择 `.img.gz` 写入；使用 Rufus 时先解压成 `.img`，再使用 DD 镜像模式写入。刷写会清空所选介质；不用再手动选择和复制 DTB。
 4. 盒子关机，断开其他 CoreELEC 启动介质，再插入新介质，沿用此前能成功进入 U 盘启动的方式。多个同名 `COREELEC` / `STORAGE` 分区同时连接可能造成挂载歧义。
 5. 首次启动会执行原版扩容并自动重启，过程中不要断电。之后进入 Kodi，配置 **5GHz Wi-Fi** 和 SMB 来源。网络名不一定包含“5G”，可用 `iw dev wlan0 link` 确认频率；本次高速验证对应 5GHz / 80MHz。
 6. 选择 4K50/60，并播放此前容易缓冲的原片，检查画面、缓存和 seek。

@@ -61,6 +61,8 @@ HDMI 模式验证见 [validation/HDMI-MODES.md](validation/HDMI-MODES.md)。无�
 
 ## 使用方法
 
+完整修复镜像下载：[Release v1（.img.gz）](https://github.com/Jioyzen/s905x2-coreelec-no-fixes/releases/tag/20261007-s905x2-fixes-v1)，附压缩包与解压后镜像的 SHA256 校验文件。
+
 如需刷写后自动安装修复，可把原版镜像制作成板型专用镜像，**不需要重新编译内核或重打包 `SYSTEM`**。镜像构建脚本、首次启动扩容处理和使用步骤见 [image/README.md](image/README.md)。
 
 初始化时请连接 **5GHz Wi-Fi**。新镜像实机已确认自动扩容、厂商驱动加载成功，5GHz TCP 下载约 588.5Mbps；同机误连 2.4GHz 时只有约 96.3Mbps，仍会出现高码率播放缓存不足。不要仅凭缓冲现象判断驱动未生效，可检查实际频率和服务状态，见 [validation/IMAGE-VALIDATION.md](validation/IMAGE-VALIDATION.md)。
