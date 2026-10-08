@@ -1,0 +1,16 @@
+[Unit]
+Description=RTL8822CS driver for S905X2 CoreELEC NO
+DefaultDependencies=no
+After=systemd-modules-load.service
+Before=connman.service network.target shutdown.target
+Conflicts=shutdown.target
+RequiresMountsFor=/storage
+
+[Service]
+Type=oneshot
+ExecStart=/storage/.config/wifi-vendor-load.sh
+RemainAfterExit=yes
+TimeoutStartSec=25
+
+[Install]
+WantedBy=multi-user.target

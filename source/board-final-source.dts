@@ -1,0 +1,9 @@
+// CoreELEC NO linux 5.15.196; common_drivers d9ec1b3.
+// Hardware: S905X2 G12A u212, 2 GiB DDR3, RTL8822CS SDIO.
+#include "g12a_s905x2_2g.dts"
+/ { model = "S905X2 G12A 2GB (u212-compatible)"; };
+&{/vpu} { clk_level = <8>; };
+&{/reserved-memory/linux,meson-fb} {
+    reg = <0x0 0x7f800000 0x0 0x800000>;
+};
+&{/sd2@ffe05000} { sd-uhs-sdr104; };

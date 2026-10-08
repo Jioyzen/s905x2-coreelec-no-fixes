@@ -1,0 +1,26 @@
+From: S905X2 board diagnosis
+Subject: [PATCH] arm64: dts: amlogic: restore G12A VPU to 666.7 MHz
+
+Commit d3221487060c added an entry at the beginning of vpu_clk_table and
+updated the G12A driver default, but mesong12a.dtsi retained index 7.
+The DT override therefore lowers G12A VPU to 500 MHz. On a S905X2 u212
+compatible board this corrupts 4K output through the OSD pipeline, while
+encoder BIST is clean. Index 8 restores the original 666.7 MHz frequency.
+Live testing and reboot testing restore Kodi 2160p60 output.
+
+--- a/arch/arm64/boot/dts/amlogic/mesong12a.dtsi
++++ b/arch/arm64/boot/dts/amlogic/mesong12a.dtsi
+@@ -342,9 +342,10 @@
+ 			"vpu_clk0",
+ 			"vpu_clk1",
+ 			"vpu_clk";
+-		clk_level = <7>;
+-		/* 0: 100.0M    1: 166.7M    2: 200.0M    3: 250.0M */
+-		/* 4: 333.3M    5: 400.0M    6: 500.0M    7: 666.7M */
++		clk_level = <8>;
++		/* Match vpu_clk_table after the low-frequency entry was added. */
++		/* 0: 25.0M  1: 100.0M  2: 166.7M  3: 200.0M  4: 250.0M */
++		/* 5: 333.3M  6: 400.0M  7: 500.0M  8: 666.7M */
+ 	};
+ 
+ 	eth_phy: mdio-multiplexer@0xff64c000 {

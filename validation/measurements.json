@@ -1,0 +1,243 @@
+[
+  {
+    "test": "download-p1",
+    "sum_received": {
+      "start": 0,
+      "end": 19.999916,
+      "seconds": 19.999916,
+      "bytes": 198311936,
+      "bits_per_second": 79325107.5654518,
+      "sender": false
+    },
+    "cpu_utilization_percent": {
+      "host_total": 8.614905951491297,
+      "host_user": 0.23148113002145976,
+      "host_system": 8.383420483449,
+      "remote_total": 3.6137955308151835e-05,
+      "remote_user": 3.396967798966272e-07,
+      "remote_system": 3.4998003584598024e-05
+    }
+  },
+  {
+    "test": "download-p4",
+    "sum_received": {
+      "start": 0,
+      "end": 19.999859,
+      "seconds": 19.999859,
+      "bytes": 173277184,
+      "bits_per_second": 69311362.2451038,
+      "sender": false
+    },
+    "cpu_utilization_percent": {
+      "host_total": 10.241918527009345,
+      "host_user": 0.3127421942667142,
+      "host_system": 9.9291806716837,
+      "remote_total": 0.11133655526479397,
+      "remote_user": 0.01806324272616017,
+      "remote_system": 0.08541851856470256
+    }
+  },
+  {
+    "test": "sdr104-download-p1",
+    "sum_received": {
+      "start": 0,
+      "end": 19.999941,
+      "seconds": 19.999941,
+      "bytes": 242614272,
+      "bits_per_second": 97045995.0856855,
+      "sender": false
+    },
+    "cpu_utilization_percent": {
+      "host_total": 10.349109172495508,
+      "host_user": 0.12781488097735452,
+      "host_system": 10.221294291518152,
+      "remote_total": 0.04589283383858539,
+      "remote_user": 0.0057621002486223875,
+      "remote_system": 0.04369507701809313
+    }
+  },
+  {
+    "test": "rxagg8-p1",
+    "sum_received": {
+      "start": 0,
+      "end": 19.999939,
+      "seconds": 19.999939,
+      "bytes": 239468544,
+      "bits_per_second": 95787709.75251473,
+      "sender": false
+    },
+    "cpu_utilization_percent": {
+      "host_total": 10.055337140093048,
+      "host_user": 0.22507927109427714,
+      "host_system": 9.83024485186436,
+      "remote_total": 0.0160549822002988,
+      "remote_user": 0,
+      "remote_system": 0.0159472532697348
+    }
+  },
+  {
+    "test": "irq-cpu1",
+    "sum_received": {
+      "start": 0,
+      "end": 11.999839,
+      "seconds": 11.999839,
+      "bytes": 146145280,
+      "bits_per_second": 97431493.8725428,
+      "sender": false
+    },
+    "cpu_utilization_percent": {
+      "host_total": 10.503845580992149,
+      "host_user": 0.27740811230059065,
+      "host_system": 10.226423229490639,
+      "remote_total": 0.034767153536999856,
+      "remote_user": 0,
+      "remote_system": 0.03407934334952621
+    }
+  },
+  {
+    "test": "standalone",
+    "sum_received": {
+      "start": 0,
+      "end": 15.000188,
+      "seconds": 15.000188,
+      "bytes": 198836224,
+      "bits_per_second": 106044657.04029843,
+      "sender": false
+    },
+    "cpu_utilization_percent": {
+      "host_total": 10.865237638389715,
+      "host_user": 0.31820727186205916,
+      "host_system": 10.547030366527656,
+      "remote_total": 0.050944983595205835,
+      "remote_user": 0,
+      "remote_system": 0.052455138466063714
+    }
+  },
+  {
+    "test": "bf-off",
+    "sum_received": {
+      "start": 0,
+      "end": 14.99989,
+      "seconds": 14.99989,
+      "bytes": 183894016,
+      "bits_per_second": 98077527.76853697,
+      "sender": false
+    },
+    "cpu_utilization_percent": {
+      "host_total": 10.427731818268214,
+      "host_user": 0.456733882276235,
+      "host_system": 9.97099793599198,
+      "remote_total": 0.0412128154428894,
+      "remote_user": 0.0015378267705261016,
+      "remote_system": 0.04494316399497722
+    }
+  },
+  {
+    "test": "upload",
+    "sum_received": {
+      "start": 0,
+      "end": 12.079147,
+      "seconds": 12.079147,
+      "bytes": 286848800,
+      "bits_per_second": 189979507.65894312,
+      "sender": true
+    },
+    "cpu_utilization_percent": {
+      "host_total": 2.769404685605953,
+      "host_user": 0.0583027319340203,
+      "host_system": 2.711137551871917,
+      "remote_total": 2.1157129194615547,
+      "remote_user": 0.1749420786252187,
+      "remote_system": 1.94203777951399
+    }
+  },
+  {
+    "test": "udp300",
+    "sum_received": {
+      "start": 0,
+      "end": 11.999892,
+      "seconds": 11.999892,
+      "bytes": 442292200,
+      "bits_per_second": 294864120.4437507,
+      "jitter_ms": 0.03695318687767957,
+      "lost_packets": 5357,
+      "packets": 321280,
+      "lost_percent": 1.6662363959278763,
+      "sender": false
+    },
+    "cpu_utilization_percent": {
+      "host_total": 15.473660849383947,
+      "host_user": 2.111317356351716,
+      "host_system": 13.362329262134349,
+      "remote_total": 8.618246606725846,
+      "remote_user": 0.89172264171996,
+      "remote_system": 7.71134805788271
+    }
+  },
+  {
+    "test": "vendor-p1",
+    "sum_received": {
+      "start": 0,
+      "end": 19.999912,
+      "seconds": 19.999912,
+      "bytes": 1446903808,
+      "bits_per_second": 578764069.761907,
+      "sender": false
+    },
+    "cpu_utilization_percent": {
+      "host_total": 16.032090884977,
+      "host_user": 0.4049914082409638,
+      "host_system": 15.6271168333867,
+      "remote_total": 0.0421805786243627,
+      "remote_user": 0.0023195014102723524,
+      "remote_system": 0.039326761190577236
+    }
+  },
+  {
+    "test": "vendor-after-reboot",
+    "sum_received": {
+      "start": 0,
+      "end": 20.000459,
+      "seconds": 20.000459,
+      "bytes": 1450704896,
+      "bits_per_second": 580268641.2346836,
+      "sender": false
+    },
+    "cpu_utilization_percent": {
+      "host_total": 16.35314837218305,
+      "host_user": 0.6224490278499526,
+      "host_system": 15.730716699545393,
+      "remote_total": 0.172098417001531,
+      "remote_user": 0.0007041986246695298,
+      "remote_system": 0.17225716901068341
+    }
+  },
+  {
+    "test": "smb210-before",
+    "MB_per_second": 11.522084369653905
+  },
+  {
+    "test": "smb3-before",
+    "MB_per_second": 10.665075863718013
+  },
+  {
+    "test": "smb210-sdr104",
+    "MB_per_second": 13.612839608517017
+  },
+  {
+    "test": "webdav-sdr104",
+    "MB_per_second": 13.420460216585685
+  },
+  {
+    "test": "smb210-vendor",
+    "MB_per_second": 71.74693055895162
+  },
+  {
+    "test": "smb3-vendor",
+    "MB_per_second": 74.3695943768075
+  },
+  {
+    "test": "webdav-vendor",
+    "MB_per_second": 73.31181487744253
+  }
+]

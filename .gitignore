@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+/build/
+*.log
+passwords.xml
+settings.xml
