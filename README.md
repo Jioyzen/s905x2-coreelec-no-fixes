@@ -62,6 +62,8 @@ HDMI 模式验证见 [validation/HDMI-MODES.md](validation/HDMI-MODES.md)。无�
 
 ## 使用方法
 
+如需刷写后自动安装修复，可把原版镜像制作成板型专用镜像，**不需要重新编译内核或重打包 `SYSTEM`**。镜像构建脚本、首次启动扩容处理和使用步骤见 [image/README.md](image/README.md)。
+
 ### 1. 下载并传到盒子
 
 在电脑上克隆仓库，或从 GitHub 下载 ZIP 并解压。将整个目录放到盒子 `/storage/s905x2-coreelec-no-fixes`。例如电脑终端：
